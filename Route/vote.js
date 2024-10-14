@@ -21,7 +21,7 @@ router.post('/registerUser', async(req, res)=>{
 });
 
 // Login Routes
-router.post('loginUser' , async(req,res)=>{
+router.post('/loginUser' , async(req,res)=>{
     const{email , passwprd} = req.body;
     try {
         const voter = await  Voter.findOne({email});
