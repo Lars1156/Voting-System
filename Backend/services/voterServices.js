@@ -36,3 +36,24 @@ const genrateToken = (voter) =>{
     return jwt.sign({voterId : voter._id, email : email._id}, secret ,{expiresIn:'1h'});
     
 }
+const updateVoteStatus = async (voterId) => {
+    try {
+        const voter = await Voter.findById(voterId);
+        if (!voter) {
+            throw new Error('Voter not found');
+        }
+        voter.vote = true; // Update the vote status
+        await voter.save();
+        return voter;
+    } catch (error) {
+        throw new Error(`Failed to update vote status: ${error.message}`);
+    }
+};
+
+module.exports = {
+    createVoter,
+    findVoterEmail,
+    vaildPassword,
+    genrateToken,
+    updateVoteStatus,
+};
