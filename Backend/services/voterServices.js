@@ -21,4 +21,18 @@ const findVoterEmail = async(email)=>{
     } catch (error) {
         throw new Error(`Failed to Find Voter Or Voter Does not Exist ${error.message}`);
     }
+};
+
+const vaildPassword = async( voter, inputPassword)=>{
+    try {
+         const isMatch = await voter.comparePassword(inputPassword);
+         return isMatch
+    } catch (error) {
+        throw new Error(``)
+    }
+}
+
+const genrateToken = (voter) =>{
+    return jwt.sign({voterId : voter._id, email : email._id}, secret ,{expiresIn:'1h'});
+    
 }
