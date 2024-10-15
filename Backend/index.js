@@ -10,6 +10,7 @@ connection('mongodb://localhost:27017/Voting System').then(()=>{
 }).catch((error)=>{
     console.error("Database Connection failed");
 })
+// Server Creation on the port no 5000 Local Host
 app.listen(5000, ()=>{
     console.log("Server is running to the 5000");    
 });
